@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Navbar, NavbarBrand } from "reactstrap";
+import Shop from "./components/ShopComponent";
+import "./App.css";
+import { SHOPITEMS } from "./shared/Shopitems";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      shopitems: SHOPITEMS
+    }
+  }
+  render() {
+    return (
+      <div className="App">
+        <Navbar dark color="danger">
+          <div className="container">
+            <NavbarBrand href="/">Cool Beans</NavbarBrand>
+          </div>
+        </Navbar>
+        <Shop shopitems={this.state.shopitems}/>
+      </div>
+    );
+  }
 }
 
 export default App;
